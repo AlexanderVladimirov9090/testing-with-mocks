@@ -1,11 +1,9 @@
 package com.clouway.endpointfilter;
 
 import org.jmock.Expectations;
-
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;
 import org.junit.Test;
-
 
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
@@ -22,7 +20,7 @@ public class EndpointFilterTest {
 
 
   @Test
-  public void happyPath() throws EmptyURLExceptions {
+  public void happyPath() throws EmptyURLExceptions, EmptyKeywordException {
     Endpoint endpoint = context.mock(Endpoint.class);
     context.checking(new Expectations() {{
       oneOf(endpoint).matches("someUrlThatWillPass");
@@ -34,7 +32,7 @@ public class EndpointFilterTest {
   }
 
   @Test(expected = EmptyURLExceptions.class)
-  public void urlIsEmpty() throws EmptyURLExceptions {
+  public void urlIsEmpty() throws EmptyURLExceptions, EmptyKeywordException {
     Endpoint endpoint = context.mock(Endpoint.class);
 
     context.checking(new Expectations() {
@@ -48,7 +46,7 @@ public class EndpointFilterTest {
   }
 
   @Test
-  public void urlDoesNotMatch() throws EmptyURLExceptions {
+  public void urlDoesNotMatch() throws EmptyURLExceptions, EmptyKeywordException {
     Endpoint endpoint = context.mock(Endpoint.class);
 
     context.checking(new Expectations() {{

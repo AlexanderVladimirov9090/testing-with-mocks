@@ -3,12 +3,13 @@ EndPointFilter:
 happyPath. - done
 url is empty throw exception. - done
 invalid url does not match. - done
-
+keyword emptu throw exception.
 
 StartsWithKeyword:
-happyPath.
-url does not start with keyword.
-
+happyPath.- done.
+url does not start with keyword. - done.
+url is empty.- done.
+KeyWordEmpty.-done .
 
 
 

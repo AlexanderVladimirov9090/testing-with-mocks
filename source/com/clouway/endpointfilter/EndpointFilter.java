@@ -14,12 +14,13 @@ public class EndpointFilter {
     this.endpoints = endpoints;
   }
 
-  public boolean shouldFilter(String url) throws EmptyURLExceptions {
+  public boolean shouldFilter(String url) throws EmptyURLExceptions, EmptyKeywordException {
+
     for (Endpoint each : endpoints) {
+
       if (each.matches(url)) {
         return true;
       }
-
     }
     return false;
   }

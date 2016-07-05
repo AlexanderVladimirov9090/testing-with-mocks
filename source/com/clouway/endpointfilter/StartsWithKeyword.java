@@ -14,7 +14,16 @@ class StartsWithKeyword implements Endpoint {
   }
 
   @Override
-  public boolean matches(String url) throws EmptyURLExceptions {
+  public boolean matches(String url) throws EmptyURLExceptions, EmptyKeywordException {
+
+    if(url.isEmpty()){
+      throw new EmptyURLExceptions();
+    }
+
+    if(keyWord.isEmpty()){
+      throw new EmptyKeywordException();
+    }
+
     if (url.startsWith(keyWord)) {
       return true;
     }

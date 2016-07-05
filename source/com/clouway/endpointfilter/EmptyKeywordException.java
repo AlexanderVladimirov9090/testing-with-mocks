@@ -6,6 +6,8 @@ package com.clouway.endpointfilter;
  * @author alexandervladimirov1902@gmail.com
  *         (Alexander Vladimirov)
  */
-public interface Endpoint {
-  boolean matches(String url) throws EmptyURLExceptions, EmptyKeywordException;
+public class EmptyKeywordException extends Exception {
+  public EmptyKeywordException(){
+    super();
+  }
 }

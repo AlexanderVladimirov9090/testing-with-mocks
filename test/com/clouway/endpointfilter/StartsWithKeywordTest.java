@@ -12,23 +12,38 @@ import static junit.framework.TestCase.assertTrue;
  * @author alexandervladimirov1902@gmail.com
  *         (Alexander Vladimirov)
  */
-public class StartsWithKeywordTest {
+public class StartsWithKeywordTest extends EndpointFilterTest {
 
   @Test
-  public void happyPath() throws EmptyURLExceptions {
+  public void happyPath() throws EmptyURLExceptions, EmptyKeywordException {
     StartsWithKeyword startsWithKeyword = new StartsWithKeyword("Start");
 
     EndpointFilter endpointFilter = new EndpointFilter(startsWithKeyword);
     assertTrue(endpointFilter.shouldFilter("StartString"));
   }
 
-  @Test
-  public void urlDoesNotStartsWithKeyWord() throws EmptyURLExceptions {
+  @Test(expected = EmptyURLExceptions.class)
+  public void emptyUrl() throws EmptyURLExceptions, EmptyKeywordException {
     StartsWithKeyword startsWithKeyword = new StartsWithKeyword("Start");
 
     EndpointFilter endpointFilter = new EndpointFilter(startsWithKeyword);
-  assertFalse(endpointFilter.shouldFilter("String"));
+    endpointFilter.shouldFilter("");
+
   }
 
+  @Test
+  public void urlDoesNotStartsWithKeyWord() throws EmptyURLExceptions, EmptyKeywordException {
+    StartsWithKeyword startsWithKeyword = new StartsWithKeyword("StartKeyWord");
 
+    EndpointFilter endpointFilter = new EndpointFilter(startsWithKeyword);
+    assertFalse(endpointFilter.shouldFilter("StringNoKeyWord"));
+  }
+
+  @Test(expected = EmptyKeywordException.class)
+  public void emptyStartKeyWord() throws EmptyURLExceptions, EmptyKeywordException {
+    StartsWithKeyword startsWithKeyword = new StartsWithKeyword("");
+
+    EndpointFilter endpointFilter = new EndpointFilter(startsWithKeyword);
+    endpointFilter.shouldFilter("SomeUrl");
+  }
 }
