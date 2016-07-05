@@ -1,0 +1,16 @@
+EndPointFilter:
+
+happyPath. - done
+url is empty throw exception. - done
+invalid url does not match. - done
+
+
+StartsWithKeyword:
+happyPath.
+url does not start with keyword.
+
+
+
+
+
+
