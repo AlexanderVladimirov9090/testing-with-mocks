@@ -15,7 +15,11 @@ public class EndpointFilter {
   }
 
   public boolean shouldFilter(String url) throws EmptyURLExceptions, EmptyKeywordException {
-
-    return endpoints[0].matches(url);
+    for (Endpoint each: endpoints) {
+      if(each.matches(url)){
+        return true;
+      }
+    }
+    return false;
   }
 }

@@ -65,19 +65,20 @@ public class EndpointFilterTest {
     Endpoint endpoint = context.mock(Endpoint.class);
     Endpoint endpoint1 = context.mock(Endpoint.class, "endPoint1");
     Endpoint endpoint2 = context.mock(Endpoint.class, "endPoint2");
+    EndpointFilter endpointFilter = new EndpointFilter(endpoint, endpoint1, endpoint2);
+
     context.checking(new Expectations() {{
-      allowing(endpoint).matches("Url");
+      oneOf(endpoint).matches("Url");
       inSequence(matchEndpoints);
       will(returnValue(false));
-      allowing(endpoint1).matches("Url");
+      oneOf(endpoint1).matches("Url");
       inSequence(matchEndpoints);
       will(returnValue(false));
-      allowing(endpoint2).matches("Url");
+      oneOf(endpoint2).matches("Url");
       inSequence(matchEndpoints);
       will(returnValue(true));
     }});
 
-    EndpointFilter endpointFilter = new EndpointFilter(endpoint, endpoint1, endpoint2);
     endpointFilter.shouldFilter("Url");
   }
 
