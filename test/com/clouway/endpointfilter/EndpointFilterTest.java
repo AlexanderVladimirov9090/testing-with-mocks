@@ -2,6 +2,7 @@ package com.clouway.endpointfilter;
 
 import org.jmock.Expectations;
 import org.jmock.Sequence;
+import org.jmock.auto.Mock;
 import org.jmock.integration.junit4.JUnitRuleMockery;
 import org.junit.Rule;
 import org.junit.Test;
@@ -18,7 +19,6 @@ import static org.junit.Assert.assertTrue;
 public class EndpointFilterTest {
   @Rule
   public JUnitRuleMockery context = new JUnitRuleMockery();
-
 
   @Test
   public void endPointIsMatching() throws EmptyURLExceptions, EmptyKeywordException {
@@ -61,25 +61,24 @@ public class EndpointFilterTest {
 
   @Test
   public void endPointMany() throws EmptyKeywordException, EmptyURLExceptions {
-    final Sequence match = context.sequence("sequence-name");
+    final Sequence matchEndpoints = context.sequence("MatchEndpoints");
     Endpoint endpoint = context.mock(Endpoint.class);
-    context.checking(new Expectations(){{
-      oneOf(endpoint).matches("ThisWillNotMatch");
-      inSequence(match);
+    Endpoint endpoint1 = context.mock(Endpoint.class, "endPoint1");
+    Endpoint endpoint2 = context.mock(Endpoint.class, "endPoint2");
+    context.checking(new Expectations() {{
+      allowing(endpoint).matches("Url");
+      inSequence(matchEndpoints);
       will(returnValue(false));
-      oneOf(endpoint).matches("ThisWillNotMatchAgain");
-      inSequence(match);
+      allowing(endpoint1).matches("Url");
+      inSequence(matchEndpoints);
       will(returnValue(false));
-      oneOf(endpoint).matches("ThisWillMatch");
-      inSequence(match);
+      allowing(endpoint2).matches("Url");
+      inSequence(matchEndpoints);
       will(returnValue(true));
     }});
 
-    EndpointFilter endpointFilter = new EndpointFilter(endpoint);
-
-    endpointFilter.shouldFilter("ThisWillNotMatch");
-    endpointFilter.shouldFilter("ThisWillNotMatchAgain");
-    endpointFilter.shouldFilter("ThisWillMatch");
-
+    EndpointFilter endpointFilter = new EndpointFilter(endpoint, endpoint1, endpoint2);
+    endpointFilter.shouldFilter("Url");
   }
+
 }
