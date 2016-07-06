@@ -24,7 +24,7 @@ public class GatewaySendsShortMessageTest {
   Getaway getaway = new Getaway(sender, smsValidator);
 
   @Test
-  public void validateShortMessage() throws GatewayNotReachableException {
+  public void validShortMessageAndSend() throws GatewayNotReachableException {
     ShortMessage shortMessage = new ShortMessage("Title", "Content", "0897000000");
     context.checking(new Expectations() {{
       oneOf(smsValidator).checkIsValidMessage(shortMessage);
@@ -38,7 +38,7 @@ public class GatewaySendsShortMessageTest {
   }
 
   @Test
-  public void notValidShortMessageNotSend() throws GatewayNotReachableException {
+  public void invalidShortMessageNotSend() throws GatewayNotReachableException {
     ShortMessage shortMessage = new ShortMessage("Title", "NotValidContent", "0889121212");
     context.checking(new Expectations() {{
       oneOf(smsValidator).checkIsValidMessage(shortMessage);

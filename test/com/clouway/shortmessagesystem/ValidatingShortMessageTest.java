@@ -15,7 +15,7 @@ import static org.junit.Assert.assertTrue;
 public class ValidatingShortMessageTest {
 
   @Test
-  public void happyPath() {
+  public void validShortMessage() {
     ShortMessageValidator shortMessageValidator = new ShortMessageValidator();
     ShortMessage shortMessage = new ShortMessage("This is title", "This is content", "0878121212");
     assertTrue(shortMessageValidator.checkIsValidMessage(shortMessage));
