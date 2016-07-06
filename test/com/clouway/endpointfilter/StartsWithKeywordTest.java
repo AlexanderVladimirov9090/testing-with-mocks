@@ -36,7 +36,6 @@ public class StartsWithKeywordTest extends EndpointFilterTest {
   @Test(expected = EmptyKeywordException.class)
   public void emptyEndPoint() throws EmptyURLExceptions, EmptyKeywordException {
     StartsWithKeyword startsWithKeyword = new StartsWithKeyword("");
-
     startsWithKeyword.matches("SomeUrl");
-      }
+  }
 }

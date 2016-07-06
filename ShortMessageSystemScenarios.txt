@@ -1,0 +1,19 @@
+Validator:
+validate message.-Done.
+validate message no title.-Done.
+validate message no content.-Done.
+validate message no recipient.-Done.
+validate message title exceeded over 50 char.-Done.
+validate message content exceeded.- Done.
+validate message recipient not valid.-Done.
+
+ShortMessageSystem:
+happyPath valid and send.
+ShortMessage is not valid and not send.
+sms is valid but There was a problem With Gateway (GetawayNotReachableException).
+
+
+Need
+ShortMessageSystem
+ShortMessage
+Validator
