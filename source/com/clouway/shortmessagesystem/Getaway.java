@@ -10,12 +10,12 @@ class Getaway {
   private final Sender sender;
   private final SMSValidator validator;
 
-  public Getaway(Sender sender, SMSValidator validator) {
+  Getaway(Sender sender, SMSValidator validator) {
     this.sender = sender;
     this.validator = validator;
   }
 
-  public boolean send(ShortMessage shortMessage) throws GatewayNotReachableException {
+  boolean send(ShortMessage shortMessage) throws GatewayNotReachableException {
     if (validator.checkIsValidMessage(shortMessage)) {
 
       sender.send(shortMessage);

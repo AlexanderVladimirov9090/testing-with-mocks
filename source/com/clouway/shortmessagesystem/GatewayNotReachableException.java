@@ -7,7 +7,7 @@ package com.clouway.shortmessagesystem;
  *         (Alexander Vladimirov)
  */
 class GatewayNotReachableException extends Exception {
-  public GatewayNotReachableException() {
+   GatewayNotReachableException() {
     super();
   }
 }

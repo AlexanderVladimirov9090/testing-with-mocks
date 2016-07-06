@@ -59,6 +59,4 @@ public class GatewaySendsShortMessageTest {
 
     getaway.send(shortMessage);
   }
-
-
 }

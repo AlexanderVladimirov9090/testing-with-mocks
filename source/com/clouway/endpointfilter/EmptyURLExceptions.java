@@ -6,8 +6,8 @@ package com.clouway.endpointfilter;
  * @author alexandervladimirov1902@gmail.com
  *         (Alexander Vladimirov)
  */
-public class EmptyURLExceptions extends Exception {
-  public EmptyURLExceptions() {
+class EmptyURLExceptions extends Exception {
+  EmptyURLExceptions() {
     super();
   }
 }

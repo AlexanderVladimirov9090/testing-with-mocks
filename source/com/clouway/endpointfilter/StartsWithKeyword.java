@@ -9,18 +9,18 @@ package com.clouway.endpointfilter;
 class StartsWithKeyword implements Endpoint {
   private final String keyWord;
 
-  public StartsWithKeyword(String keyWord) {
+  StartsWithKeyword(String keyWord) {
     this.keyWord = keyWord;
   }
 
   @Override
   public boolean matches(String url) throws EmptyURLExceptions, EmptyKeywordException {
 
-    if(url.isEmpty()){
+    if (url.isEmpty()) {
       throw new EmptyURLExceptions();
     }
 
-    if(keyWord.isEmpty()){
+    if (keyWord.isEmpty()) {
       throw new EmptyKeywordException();
     }
 

@@ -6,8 +6,8 @@ package com.clouway.endpointfilter;
  * @author alexandervladimirov1902@gmail.com
  *         (Alexander Vladimirov)
  */
-public class EmptyKeywordException extends Exception {
-  public EmptyKeywordException(){
+class EmptyKeywordException extends Exception {
+  EmptyKeywordException() {
     super();
   }
 }

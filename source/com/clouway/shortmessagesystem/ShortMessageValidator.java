@@ -10,36 +10,30 @@ class ShortMessageValidator implements SMSValidator  {
 
   @Override
   public boolean checkIsValidMessage(ShortMessage shortMessage) {
-    if (isEmpty(shortMessage)) {
-      return false;
-    }
-    if (checkConsistencyOfRecipient(shortMessage)) {
-      return false;
-    }
-    if (titleAndContentExceeded(shortMessage)) {
+    if (isEmpty(shortMessage)||checkConsistencyOfRecipient(shortMessage)||titleAndContentExceeded(shortMessage)){
       return false;
     }
     return true;
   }
 
   private boolean titleAndContentExceeded(ShortMessage shortMessage) {
-    if (shortMessage.getTitle().length() > 50) {
+    if (shortMessage.title.length() > 50) {
       return true;
     }
-    if (shortMessage.getContent().length() > 120) {
+    if (shortMessage.content.length() > 120) {
       return true;
     }
     return false;
   }
 
   private boolean checkConsistencyOfRecipient(ShortMessage shortMessage) {
-    if (!shortMessage.getRecipient().startsWith("08")) {
+    if (!shortMessage.recipient.startsWith("08")) {
       return true;
     }
-    if (!shortMessage.getRecipient().matches("[0-9]+")) {
+    if (!shortMessage.recipient.matches("[0-9]+")) {
       return true;
     }
-    if (shortMessage.getRecipient().length() < 10 || shortMessage.getRecipient().length() > 10) {
+    if (shortMessage.recipient.length() < 10 || shortMessage.recipient.length() > 10) {
       return true;
     }
     return false;
@@ -47,9 +41,6 @@ class ShortMessageValidator implements SMSValidator  {
   }
 
   private boolean isEmpty(ShortMessage shortMessage) {
-    if (shortMessage.getTitle().isEmpty() || shortMessage.getContent().isEmpty() || shortMessage.getRecipient().isEmpty()) {
-      return true;
-    }
-    return false;
+    return shortMessage.title.isEmpty() || shortMessage.content.isEmpty() || shortMessage.recipient.isEmpty();
   }
 }

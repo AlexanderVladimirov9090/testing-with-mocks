@@ -6,6 +6,6 @@ package com.clouway.shortmessagesystem;
  * @author alexandervladimirov1902@gmail.com
  *         (Alexander Vladimirov)
  */
-public interface SMSValidator {
+interface SMSValidator {
   boolean checkIsValidMessage(ShortMessage shortMessage);
 }

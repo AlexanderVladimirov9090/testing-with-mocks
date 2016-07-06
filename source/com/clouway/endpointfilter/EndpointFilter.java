@@ -6,17 +6,17 @@ package com.clouway.endpointfilter;
  * @author alexandervladimirov1902@gmail.com
  *         (Alexander Vladimirov)
  */
-public class EndpointFilter {
+class EndpointFilter {
   private final Endpoint[] endpoints;
 
 
-  public EndpointFilter(Endpoint... endpoints) {
+  EndpointFilter(Endpoint... endpoints) {
     this.endpoints = endpoints;
   }
 
-  public boolean shouldFilter(String url) throws EmptyURLExceptions, EmptyKeywordException {
-    for (Endpoint each: endpoints) {
-      if(each.matches(url)){
+  boolean shouldFilter(String url) throws EmptyURLExceptions, EmptyKeywordException {
+    for (Endpoint each : endpoints) {
+      if (each.matches(url)) {
         return true;
       }
     }
