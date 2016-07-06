@@ -48,7 +48,7 @@ public class GatewaySendsShortMessageTest {
   }
 
   @Test(expected = GatewayNotReachableException.class)
-  public void validShortMessageNotSend() throws GatewayNotReachableException {
+  public void unableToDeliverShortMessage() throws GatewayNotReachableException {
     ShortMessage shortMessage = new ShortMessage("Hello", "Some Contetn", "012321314");
     context.checking(new Expectations() {{
       oneOf(smsValidator).checkIsValidMessage(shortMessage);
