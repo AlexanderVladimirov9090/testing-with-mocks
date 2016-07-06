@@ -15,7 +15,6 @@ class Getaway {
     this.validator = validator;
   }
 
-
   public boolean send(ShortMessage shortMessage) throws GatewayNotReachableException {
     if (validator.checkIsValidMessage(shortMessage)) {
 

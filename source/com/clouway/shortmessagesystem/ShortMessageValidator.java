@@ -46,8 +46,6 @@ class ShortMessageValidator implements SMSValidator  {
 
   }
 
-
-
   private boolean isEmpty(ShortMessage shortMessage) {
     if (shortMessage.getTitle().isEmpty() || shortMessage.getContent().isEmpty() || shortMessage.getRecipient().isEmpty()) {
       return true;
